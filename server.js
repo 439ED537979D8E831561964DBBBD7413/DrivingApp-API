@@ -35,6 +35,7 @@ app.use(bodyParser.json());
 // use morgan to log requests to the console
 app.use(morgan('dev'));
 
+//CORS
 app.use(cors())
 
 //Express middleware - This will ensure that the middleware runs before the routes.
