@@ -1,7 +1,7 @@
 var Zone = require('../models/zones');
 
 var cb = require('ocb-sender')
-cb.config('http://207.249.127.149',1026,'v2')
+//cb.config('http://207.249.127.149',1026,'v2')
 
 exports.alertsZone = async function (req,res) {
 	await Zone.findOne({ '_id': req.params.zone }, async function(err, zone) {

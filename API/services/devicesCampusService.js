@@ -1,7 +1,7 @@
 var Campus = require('../models/campus');
 
 var cb = require('ocb-sender')
-cb.config('http://207.249.127.149',1026,'v2')
+//cb.config('http://207.249.127.149',1026,'v2')
 
 exports.devicesCampus = async function (req,res) {
 	await Campus.findOne({ '_id': req.params.campus }, async function(err, campus) {
