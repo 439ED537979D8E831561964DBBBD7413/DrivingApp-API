@@ -1,8 +1,9 @@
 var PointOnCampus = require('../../NotificationsServer/functions/pointOnCampus');
 
 exports.pointCampus= function (req,res) {
-    let body = ngsi.createQuery(req.body);
     console.log(body);
-    let salida = PointOnCampus(body[0], body[1]);
+    let point = body.point.split(";");
+    let polygon = body.polygon.split(";");
+    let salida = PointOnCampus(point, polygon);
     res.json({ isOnCampus: salida});
 }
