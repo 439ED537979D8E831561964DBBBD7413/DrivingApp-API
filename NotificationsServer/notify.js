@@ -6,6 +6,8 @@ var getDevicesTokens = require('./functions/getDevicesTokens')
 var sendNotification = require('./functions/sendNotification')
 
 module.exports = async function notify(req, res, next) {
+
+	console.log("NOTIFICACIÖN ENTRANTE")
 	let socketio = req.app.get('socketio');
 	let alert = req.body['data'][0]
 	let campus = await determinateCampus(alert.location)//Detectar campus donde se genera la alerta
