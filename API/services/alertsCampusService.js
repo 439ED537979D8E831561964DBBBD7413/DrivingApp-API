@@ -1,6 +1,7 @@
 var Campus = require('../models/campus');
 
 var cb = require('ocb-sender')
+var ngsi = require('ngsi-parser')
 //cb.config('http://207.249.127.149',1026,'v2')
 
 exports.alertsCampus = async function (req,res) {
