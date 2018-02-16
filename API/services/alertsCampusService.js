@@ -8,13 +8,30 @@ exports.alertsCampus = async function (req,res) {
 		if (err)
 	      res.send(err);
 	  	if (campus != null){
-	  		await cb.queryEntitiesOnArea(campus.location ,".*","Alert",true)
-				.then((result) =>{
-				    if (result.length > 0){
-						res.status(200).json(result)
-				    }else{
-				    	res.status(200).json({})
-				    }
+
+			let data  = {
+				id: "Alert:Device_Smartphone_.*",
+				type : "Alert",
+				limit: "100",
+				options : "keyValues",
+				georel :"coveredBy",
+				geometry:"polygon",
+				coords : campus.location,
+				limit : "10"
+			  }
+
+			let query = ngsi.createQuery(data);
+			console.log(query);
+			await cb.getWithQuery(query)
+			.then((result) => {
+				if (result.length > 0){
+					res.status(200).json(result)
+				}else{
+					res.status(200).json({})
+				}
+			})
+			.catch((error) =>{
+				res.status(500).send(error);
 			})
 	  	}  	
 	});
