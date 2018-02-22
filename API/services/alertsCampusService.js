@@ -1,5 +1,5 @@
+const { DateTime } = require('luxon');
 var Campus = require('../models/campus');
-
 var cb = require('ocb-sender')
 var ngsi = require('ngsi-parser')
 //cb.config('http://207.249.127.149',1026,'v2')
@@ -9,16 +9,18 @@ exports.alertsCampus = async function (req,res) {
 		if (err)
 	      res.send(err);
 	  	if (campus != null){
+			var dt = DateTime.local();
+			let fifteenAgo = dt.minus({ minutes: 15 });
 
 			let data  = {
 				id: "Alert:Device_Smartphone_.*",
 				type : "Alert",
-				limit: "100",
 				options : "keyValues",
 				georel :"coveredBy",
 				geometry:"polygon",
 				coords : campus.location,
-				limit : "10"
+				limit : "10",
+				dateObserved: `>=${fifteenAgo}`
 			  }
 
 			let query = ngsi.createQuery(data);
