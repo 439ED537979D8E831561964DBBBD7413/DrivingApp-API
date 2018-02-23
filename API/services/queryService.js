@@ -1,9 +1,9 @@
-
+const { DateTime } = require('luxon');
 var cb = require('ocb-sender')
 var ngsi = require('ngsi-parser')
 //cb.config('http://207.249.127.149',1026,'v2')
 
-exports.queryInArea = async function (req,res) {
+exports.queryInArea = async function (req,res) {    
     let query = ngsi.createQuery(req.body);
     console.log(query);
     await cb.getWithQuery(query)
