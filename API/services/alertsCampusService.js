@@ -24,10 +24,10 @@ exports.alertsCampus = async function (req,res) {
 				//dateObserved: `>=${fifteenAgo}`
 			}
 
-			let query2 = ngsi.createQuery(data2);
+			let query = ngsi.createQuery(data);
 
 			await cb.getWithQuery(query)
-			.then((response) => {
+			.then(async (response) => {
 
 				let data2  = {
 					id: "Alert:Device_Smartphone_.*",
@@ -42,8 +42,8 @@ exports.alertsCampus = async function (req,res) {
 				}
 
 				let query2 = ngsi.createQuery(data2);
-				console.log(query);
-				await cb.getWithQuery(query)
+				console.log(query2);
+				await cb.getWithQuery(query2)
 				.then((result) => {
 					if (result.length > 0){
 						res.status(200).json(result)
