@@ -20,7 +20,7 @@ exports.alertsCampus = async function (req,res) {
 				geometry:"polygon",
 				coords : campus.location,
 				limit : "10",
-				dateObserved: `>=${fifteenAgo}`
+				//dateObserved: `>=${fifteenAgo}`
 			  }
 
 			let query = ngsi.createQuery(data);
