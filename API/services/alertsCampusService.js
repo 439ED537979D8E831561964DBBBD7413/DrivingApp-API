@@ -33,9 +33,11 @@ exports.alertsCampus = async function (req,res) {
                 },
 			};
 			
-            fetch(`http://130.206.113.226:1026/v2/entities${query}`, options)
+            await fetch(`http://130.206.113.226:1026/v2/entities${query}`, options)
 			.then(async (response) => {
-				console.log(response["headers"]["Headers"]["_headers"]["fiware-total-count"])
+
+				let off = Number(response["headers"]["_headers"]["fiware-total-count"][0])  
+				console.log(off)
 				let data2  = {
 					id: "Alert:Device_Smartphone_.*",
 					type : "Alert",
@@ -44,12 +46,9 @@ exports.alertsCampus = async function (req,res) {
 					geometry:"polygon",
 					coords : campus.location,
 					limit : "10",
-					offset : response.headers["fiware-total-count"] - 10
-
+					offset : off - 10
 					//dateObserved: `>=${fifteenAgo}`
 				}
-
-
 				let query2 = ngsi.createQuery(data2);
 				console.log(query2);
 				await cb.getWithQuery(query2)
