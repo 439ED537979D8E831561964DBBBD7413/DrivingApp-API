@@ -37,7 +37,6 @@ exports.alertsCampus = async function (req,res) {
 			.then(async (response) => {
 
 				let off = Number(response["headers"]["_headers"]["fiware-total-count"][0])  
-				console.log(off)
 				let data2  = {
 					id: "Alert:Device_Smartphone_.*",
 					type : "Alert",
@@ -46,9 +45,11 @@ exports.alertsCampus = async function (req,res) {
 					geometry:"polygon",
 					coords : campus.location,
 					limit : "10",
-					offset : off - 10
-					//dateObserved: `>=${fifteenAgo}`
 				}
+				if (off > 20){
+					data2.offset = offset -10
+				}
+				//console.log(off)
 				let query2 = ngsi.createQuery(data2);
 				console.log(query2);
 				await cb.getWithQuery(query2)
