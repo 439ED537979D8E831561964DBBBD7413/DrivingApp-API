@@ -17,6 +17,7 @@ module.exports = async function getDevicesOnCampus(location) {
 			coords : location,
 			dateModified: `>=${teenAgo}`
 		})
+		console.log(query)
 		await cb.getWithQuery(query)
 		.then(async (result) => {
 			
