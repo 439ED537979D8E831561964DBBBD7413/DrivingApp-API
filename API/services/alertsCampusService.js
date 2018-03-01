@@ -45,7 +45,7 @@ exports.alertsCampus = async function (req,res) {
 					coords : campus.location,
 					limit : "10",
 				}
-				if (off > 20){
+				if (off > 10){
 					data2.offset = offset -10
 				}
 				//console.log(off)
