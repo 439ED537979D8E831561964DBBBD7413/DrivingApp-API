@@ -10,6 +10,7 @@ module.exports = async function notify(req, res, next) {
 	console.log("NOTIFICACIÖN ENTRANTE")
 	let socketio = req.app.get('socketio');
 	let alert = req.body['data'][0]
+	console.log(alert)
 	let campus = await determinateCampus(alert.location)//Detectar campus donde se genera la alerta
 	if (campus !== undefined) {
 		socketio.sockets.emit('allalerts', alert) // Envía alerta a Driving Monitor Web APP
