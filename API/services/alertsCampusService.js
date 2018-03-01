@@ -46,7 +46,7 @@ exports.alertsCampus = async function (req,res) {
 					limit : "10",
 				}
 				if (off > 10){
-					data2.offset = offset -10
+					data2.offset = off -10
 				}
 				//console.log(off)
 				let query2 = ngsi.createQuery(data2);
