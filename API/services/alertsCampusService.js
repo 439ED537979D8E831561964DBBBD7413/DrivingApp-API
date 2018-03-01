@@ -10,7 +10,7 @@ exports.alertsCampus = async function (req,res) {
 		if (err)
 	      res.send(err);
 	  	if (campus != null){
-			var dt = DateTime.local();
+			var dt = DateTime.local().setZone('America/New_York');
 			let fifteenAgo = dt.minus({ minutes: 15 });
 
 			let data  = {
