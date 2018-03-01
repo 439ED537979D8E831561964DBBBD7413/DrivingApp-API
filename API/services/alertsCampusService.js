@@ -1,4 +1,4 @@
-const { DateTime } = require('luxon');
+
 var Campus = require('../models/campus');
 var cb = require('ocb-sender')
 var ngsi = require('ngsi-parser')
@@ -10,8 +10,7 @@ exports.alertsCampus = async function (req,res) {
 		if (err)
 	      res.send(err);
 	  	if (campus != null){
-			var dt = DateTime.local().setZone('America/New_York');
-			let fifteenAgo = dt.minus({ minutes: 15 });
+			
 
 			let data  = {
 				id: "Alert:Device_Smartphone_.*",

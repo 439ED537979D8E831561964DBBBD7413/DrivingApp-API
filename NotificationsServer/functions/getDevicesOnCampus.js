@@ -4,8 +4,8 @@ var ngsi = require('ngsi-parser')
 
 module.exports = async function getDevicesOnCampus(location) {
 	console.log("devices en el campus")
-	var dt = DateTime.local();
-	let teenAgo = dt.minus({ minutes: 10 });
+	var dt = DateTime.local().setZone('America/New_York');
+	let fifteenAgo = dt.minus({ minutes: 15 });
 	let devicesList = []
 	if (location !== undefined){
 		let query = ngsi.createQuery({
