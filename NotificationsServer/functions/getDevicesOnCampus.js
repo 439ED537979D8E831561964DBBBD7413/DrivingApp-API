@@ -12,10 +12,10 @@ module.exports = async function getDevicesOnCampus(location) {
 		  	id: ".*",
 		  	type: "Device",
 		  	options: "keyValues",
-		  	georel :"coveredBy",
-			geometry:"polygon",
-			coords : location,
-			dateModified: `>=${teenAgo}`
+		  	//georel :"coveredBy",
+			//geometry:"polygon",
+			//coords : location,
+			//dateModified: `>=${teenAgo}`
 		})
 		console.log(query)
 		await cb.getWithQuery(query)
